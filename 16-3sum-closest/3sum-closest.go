@@ -1,7 +1,6 @@
 import (
     "fmt"
     "sort"
-    "math"
 )
 
 func threeSumClosest(nums []int, target int) int {
@@ -24,7 +23,10 @@ func threeSumClosest(nums []int, target int) int {
             }
             n1, n2, n3 := nums[i], nums[j], nums[k]
             //fmt.Printf("%d %d,  %d %d,  %d %d\n", i, n1, j, n2, k, n3)
-            abs := int(math.Abs(float64(n1+n2+n3-target)))
+            abs := n1+n2+n3-target
+            if abs < 0 {
+                abs = abs * -1
+            }
             if abs < minAbs {
                 minAbs = abs
                 ret = n1+n2+n3
